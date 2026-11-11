@@ -20,7 +20,8 @@ async function bootstrap() {
   const config = app.get(ConfigService);
   const logger = new Logger('Bootstrap');
 
-  const port = config.getOrThrow<number>('PORT');
+  // const port = config.getOrThrow<number>('PORT');
+  const port = config.get<number>('PORT') ?? 3000;
   const corsOrigins = config
     .getOrThrow<string>('CORS_ORIGIN')
     .split(',')
@@ -78,7 +79,8 @@ async function bootstrap() {
     jsonDocumentUrl: 'api/docs-json',
   });
 
-  await app.listen(port);
+  // await app.listen(port);
+  await app.listen(port, '0.0.0.0');
 
   logger.log(`API running at http://localhost:${port}/api/v1`);
   logger.log(`Swagger docs at http://localhost:${port}/api/docs`);
