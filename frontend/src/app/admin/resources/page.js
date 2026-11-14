@@ -17,6 +17,7 @@ import {
 import { apiRequest } from "@/lib/api";
 import { useAuth } from "@/context/AuthContext";
 import { getErrorMessage } from "@/lib/api-errors";
+import { resolveResourceUrl } from "@/lib/resource-url";
 
 const resourceTypeLabels = {
   PDF: "PDF",
@@ -281,7 +282,7 @@ export default function AdminResourcesPage() {
                         </Link>
                         {resource.filePath ? (
                           <a
-                            href={`/uploads/${resource.filePath}`}
+                            href={resolveResourceUrl(`/uploads/${resource.filePath}`)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 transition hover:bg-gray-100 hover:text-blue-600"

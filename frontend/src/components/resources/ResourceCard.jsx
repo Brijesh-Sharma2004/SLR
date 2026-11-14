@@ -1,7 +1,10 @@
 import Link from "next/link";
 
+import { resolveResourceUrl } from "@/lib/resource-url";
+
 export default function ResourceCard({ resource }) {
   const isPDF = resource.type === "PDF";
+  const resourceUrl = resolveResourceUrl(resource.url);
 
   return (
     <div className="rounded-2xl border border-[#e2defa] bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
@@ -30,7 +33,7 @@ export default function ResourceCard({ resource }) {
         {isPDF ? (
           <div className="flex gap-3">
             <Link
-              href={resource.url}
+              href={resourceUrl}
               target="_blank"
               className="rounded-full bg-[#a3aaf5] px-4 py-2 text-sm font-medium text-white hover:bg-[#858ff0]"
             >
@@ -38,7 +41,7 @@ export default function ResourceCard({ resource }) {
             </Link>
 
             <a
-              href={resource.url}
+              href={resourceUrl}
               download
               className="rounded-full border border-[#a3aaf5] px-4 py-2 text-sm font-medium text-[#737cff] hover:bg-[#efedff]"
             >
@@ -47,7 +50,7 @@ export default function ResourceCard({ resource }) {
           </div>
         ) : (
           <a
-            href={resource.url}
+            href={resourceUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex rounded-full bg-[#a3aaf5] px-4 py-2 text-sm font-medium text-white hover:bg-[#858ff0]"

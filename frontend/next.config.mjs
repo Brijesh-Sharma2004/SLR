@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
-const apiUrl = (process.env.API_URL || "http://localhost:3001").replace(
-  /\/$/,
-  "",
-);
+const apiUrl = (
+  process.env.API_URL ||
+  process.env.NEXT_PUBLIC_API_URL ||
+  "http://localhost:3001"
+)
+  .replace(/\/+$/, "")
+  .replace(/\/api\/v1$/, "");
 
 const nextConfig = {
   cacheComponents: true,

@@ -180,7 +180,9 @@ export default function ResourceForm() {
       <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900">Access Denied</h1>
-          <p className="mt-2 text-gray-600">You do not have permission to access this page.</p>
+          <p className="mt-2 text-gray-600">
+            You do not have permission to access this page.
+          </p>
         </div>
       </div>
     );
@@ -199,20 +201,27 @@ export default function ResourceForm() {
         </Link>
         <div>
           <h1 className="text-3xl font-bold text-[#211d50]">
-            {isEditing ? "Edit Resource" : isUpload ? "Upload New Resource" : "Create Resource"}
+            {isEditing
+              ? "Edit Resource"
+              : isUpload
+                ? "Upload New Resource"
+                : "Create Resource"}
           </h1>
           <p className="mt-1 text-gray-600">
             {isEditing
               ? "Update the resource details below"
               : isUpload
-              ? "Upload a file and fill in the details"
-              : "Fill in the details to create a new resource (external URL)"}
+                ? "Upload a file and fill in the details"
+                : "Fill in the details to create a new resource (external URL)"}
           </p>
         </div>
       </div>
 
       {error && (
-        <div className="rounded-xl bg-red-50 p-4 text-sm text-red-600" role="alert">
+        <div
+          className="rounded-xl bg-red-50 p-4 text-sm text-red-600"
+          role="alert"
+        >
           {error}
         </div>
       )}
@@ -236,7 +245,9 @@ export default function ResourceForm() {
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-gray-900">Resource Information</h2>
+          <h2 className="text-lg font-semibold text-gray-900">
+            Resource Information
+          </h2>
 
           <div className="mt-6 space-y-5">
             <div>
@@ -332,7 +343,8 @@ export default function ResourceForm() {
                   htmlFor="file"
                   className="mb-2 block text-sm font-medium text-gray-700"
                 >
-                  File Upload {isUpload ? '<span className="text-red-500">*</span>' : ''}
+                  File Upload{" "}
+                  {isUpload ? '<span className="text-red-500">*</span>' : ""}
                 </label>
                 <div className="relative">
                   <input
@@ -355,8 +367,8 @@ export default function ResourceForm() {
                               {filePreview.name}
                             </p>
                             <p className="text-sm text-gray-500">
-                              {(filePreview.size / (1024 * 1024)).toFixed(2)} MB •{' '}
-                              {filePreview.type || "Unknown type"}
+                              {(filePreview.size / (1024 * 1024)).toFixed(2)} MB
+                              • {filePreview.type || "Unknown type"}
                             </p>
                           </div>
                         </div>
@@ -435,7 +447,11 @@ export default function ResourceForm() {
             ) : (
               <>
                 <Save size={18} />
-                {isEditing ? "Update Resource" : isUpload ? "Upload Resource" : "Create Resource"}
+                {isEditing
+                  ? "Update Resource"
+                  : isUpload
+                    ? "Upload Resource"
+                    : "Create Resource"}
               </>
             )}
           </button>
